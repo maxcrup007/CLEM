@@ -1,0 +1,146 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_filters %}
+{% block content %}
+{% load static %}
+
+        <br><br>
+
+        <div class="row ">
+                <div class="col-lg-7 mx-auto">
+                    <div class="card mt-2 mx-auto p-4 bg-light">
+                        <div class="card-body bg-light">
+                            <div class="container">
+                            <div class="bg bg-white form-group mx-auto my-auto">
+
+
+                                <form method="post" class="form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+
+                                    <div class="form-group">
+                                    <h6>Applicant:&nbsp&nbsp{{user.first_name}}&nbsp&nbsp{{user.last_name}}</h6>
+                                    </div>
+
+
+                                    <div class="form-group col-md-6 mb-0">
+                                        {{ form.objective|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form.project_name|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form.experiment_variable|as_crispy_field}}
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        {{ petition_form.equipment|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ petition_form.start_reservation|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ petition_form.end_reservation|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ petition_form.comment|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ petition_form.description|as_crispy_field}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ petition_form.official_working|as_crispy_field}}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ petition_form.confirm|as_crispy_field}}
+                                    </div>
+
+
+                                </div>
+
+
+
+                                    <br><br>
+
+                                    <div class="container">
+                                          <div class="panel-group" id="buffy-stuff-accordion-group">
+                                            <div class="panel">
+                                              <div class="panel-heading" data-toggle="collapse" data-parent="#buffy-stuff-accordion-group" href="#buffy-characters-body">
+                                                <h4>โครงการที่ใช้งาน Lyophilizer หรือ ต้องการใช้สารสกัดตัวอย่าง</h4>
+                                                <i class="fa fa-chevron-circle-down fa-lg pull-right"></i>
+                                              </div>
+                                              <div class="collapse in" id="buffy-characters-body">
+                                                <div class="panel-body">
+                                                  <ul class="character-list">
+                                                    <div class="form-group">
+                                                        {{ form.example|as_crispy_field}}
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        {{ form.substance|as_crispy_field}}
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        {{ form.catalyst|as_crispy_field}}
+                                                    </div>
+
+                                                  </ul>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <br><br>
+
+                                            <div class="panel">
+                                              <div class="panel-heading collapsed" data-toggle="collapse" data-parent="#buffy-stuff-accordion-group" href="#buffy-creator-body">
+                                                <h4>โครงการที่ใช้งาน Microplate Reader ที่ใช้งานรูปแบบการใช้แบบพิเศษ</h4>
+                                                <i class="fa fa-chevron-circle-down fa-lg pull-right"></i>
+                                              </div> <!-- panel-heading -->
+                                              <div class="collapse" id="buffy-creator-body">
+                                                <div class="panel-body">
+                                                  <div class="form-group">
+                                                        {{ form.scientific_usage|as_crispy_field}}
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        {{ form.substance|as_crispy_field}}
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        {{ form.catalyst|as_crispy_field}}
+                                                    </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                    </div>
+                                              <br><br>
+
+                                    <center>
+                                        <input class="btn btn-success btn-circled" type="submit" value="Submit"/>
+                                    </center>
+
+                                    <br><br>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+
+
+
+
+
+{% endblock content %}

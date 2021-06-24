@@ -1,0 +1,15 @@
+{% extends 'edl_management/base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Submit"/>
+
+    </form>
+
+{% endblock content %}

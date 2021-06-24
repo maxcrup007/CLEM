@@ -1,0 +1,199 @@
+{% extends 'edl_management/base.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+
+<!--==========================================
+=            All Category Section            =
+===========================================-->
+
+
+ <!-- HERO
+    ================================================== -->
+    <section class="banner-area py-5" id="banner-3">
+       <div class="overlay"></div>
+        <!-- Content -->
+        <div class="container">
+            <div class="row  align-items-center justify-content-center">
+                <div class="col-md-12 col-lg-9">
+                   <div class="banner-content text-center style-2">
+                        <!-- Heading -->
+                        <h1 class="display-4 mb-4 ">
+                            ระบบยื่นคำร้องขอใช้งานครุภัณฑ์
+                        </h1>
+
+                        <!-- Subheading -->
+                        <p class="lead mb-5 pr-0">
+                            ห้องปฏิบัติการวิจัยกลาง คณะวิทยาศาสตร์การแพทย์ มหาวิทยาลัยพะเยา จัดตั้งขึ้นเพื่อให้บริการเครื่องมือสำหรับงานวิจัย ด้านวิเคราะห์และทดสอบ ให้แก่นักวิจัยและนิสิตภายในหน่วยงาน
+                            ระบบการยื่นคำร้องนี้จัดทำขึ้นเพื่อการจัดการใช้ครุภัณฑ์ เป็นไปด้วยความเรียบร้อย . <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"href="">อ่านเพิ่มเติม.</a>
+                        </p>
+
+
+                        <!-- Button -->
+                        <a href="{% url 'approval_create' %}" target="_blank" class="btn btn-primary btn-circled">
+                                ดำเนินการต่อ
+                        </a>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+
+
+<section id="about" class="section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div >
+                    <div class="img-block">
+                        <center>
+                            <img src="{% static 'images/lab2.jpg' %}" >
+                        </center>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+<section class="section" id="service">
+            <br/>
+
+            <div >
+                <div class="text-center feature-block">
+                        <div class="img-icon-block mb-4">
+                            <i class="ti-calendar"></i>
+                        </div>
+                        <h2 align="center"><a href="{% url 'calendar-page' %}">ปฏิทินของครุภัณฑ์ทางวิทยาศาสตร์</a></h2>
+                </div>
+            </div>
+
+            <br/>
+            <div class="container">
+                <div id="calendar"></div>
+            </div>
+
+</section>
+
+
+
+<section class="section" id="services-2">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 text-center">
+                    <div class="section-heading">
+                        <!-- Heading -->
+                        <h2 class="section-title mb-2 text-white">
+                            คู่มือการใช้งานเครื่องมือวิทยาศาสตร์
+                        </h2>
+
+                        <!-- Subheading -->
+                        <p class="mb-5 text-white">
+                            เป็นคู่มือสำหรับใช้งานเครื่องมือทางวิทยาศาสตร์หรือครุภัณฑ์ทางวิทยาศาสตร์ ใช้ประกอบในการใช้งาน.
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <div class="web-service-block">
+<!--                        <i class="ti-light-bulb"></i>-->
+                        <h3>Micro Spectrophotometer</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1RPzW27dsTl5fPd3X8iH9BOqwVgW3as6l/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <div class="web-service-block">
+<!--                        <i class="ti-desktop"></i>-->
+                        <h3>pH Meter</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1UyagdUtArbYHhOz7lqQMqWNgTO-Q8_9o/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <div class="web-service-block">
+<!--                        <i class="ti-announcement"></i>-->
+                        <h3>Tissue Processor</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/18RvI9Fon1mivyIG4rNinOgf1VhZILmZB/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-layers-alt"></i>-->
+                        <h3>Cryostat</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1rV_3FaeRaOEk87qGwNxYj9RJqBjYRucf/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-mobile"></i>-->
+                        <h3>Lyophilizer</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1zT-Wpdkc3yuX9xylbpt95qku1t47beWM/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-settings"></i>-->
+                        <h3>Multi-Mode Microplate Reader</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1UqFuiTOTpTUH7_zuR4hrai8khsR8AoQ6/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-layers-alt"></i>-->
+                        <h3>Realtime-PCR</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/drive/folders/162Kb3EPhXclMg-bOpncDsymG9iEypRZj">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block" >
+                        <h3>chemiPro Chemiluminescence</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/drive/folders/1CybPJGL4f1Ii2tHKWvQQFqstm_QQUCr9">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-settings"></i>-->
+                        <h3>ชุดถ่ายภาพกล้องสเตอริโอ 3 ตา</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1JD_Huk6f5o-8pg_-9iuvAxud3732r5hk/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+<!--===================================
+=            Client Slider            =
+====================================-->
+
+
+
+
+
+
+
+{% endblock content %}
+
+

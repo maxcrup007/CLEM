@@ -1,0 +1,50 @@
+{% extends 'edl_management/base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+    <div class="container bg bg-white">
+
+    <div class="container-fliud">
+    <div class="wrapper row">
+    <div class="preview col-6">
+
+        <div class="preview-pic tab-content">
+            <div class="tab-pane active  my-auto mx-auto" id="pic-1"><img
+                    src="{{ dev.picture.url }}" height="500" width="400"/>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="details col-6">
+        <h1>Title: {{ dev.equipment_ID }}&nbsp&nbsp{{ dev.equipment_name }}</h1>
+
+        <p><strong>Lender:</strong>{{ dev.lender }}</p>
+        <p><strong>Summary:</strong> {{ dev.summary }}</p>
+        <p><strong>Amount:</strong> {{ dev.total_amount }}</p>
+        <p><strong>Locations:</strong> {{ dev.equipment_at }}</p>
+
+            <h4>Copies</h4>
+            {% if user.is_superuser %}
+                <a class="btn btn-danger" href="{% url 'device-delete' pk=dev.id %}">Delete</a>
+                <a class="btn btn-success" href="{% url 'device-update' pk=dev.id %}">Update</a>
+
+            {% endif %}
+
+            {% if dev.available_copies %}
+                <br>
+                no of avialable copies={{ dev.available_copies }}<br>
+                <a class="btn btn-primary" href="{% url 'request_issue' pk=dev.id %}">Issue</a>
+            {% endif %}
+    </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+

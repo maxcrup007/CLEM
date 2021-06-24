@@ -1,0 +1,34 @@
+{% autoescape off %}
+
+
+    $#### คำร้องขอใช้งานครุภัณฑ์ทางวิทยาศาสตร์ ####$
+
+    ชื่อ-สกุล: {{ pep.user }}
+    อีเมล์: {{ user.email }}
+    เบอร์โทรติดต่อ: {{ sender.tel }}
+    สถานะ: {{ sender.status }}
+    คณะ: {{ sender.faculty }}
+    สาขา: {{ sender.branch }}
+    โครงการวิจัย: {{ pep.project_name }}
+    ขอเข้าใช้งานใช้งาน: {{ apv.equipment }}
+    ตั้งแต่เวลา:  {{ apv.start_reservation }}
+    จนถึงเวลา:  {{ apv.end_reservation }}
+    คำยินยอมตามเงื่อนไข: {{ apv.confirm }}
+
+    การใช้งานครุภัณฑ์เพื่อ: {{ pep.objective }}
+    คำอธิบายเพิ่มเติม: {{ apv.description }}
+
+    ----------รายละเอียดประกอบโครงการ-----------------
+    ชนิดประเภทสารเคมีในการทำวิจัย: {{ pep.substance }}
+    สารตั้งต้นหรือตัวเร่งในการทำวิจัย: {{ pep.catalyst }}
+    สารสกัดตัวอย่าง: {{ pep.experiment_variable  }}
+    ลักษณะของการใช้งาน: {{ pep.scientific_usage  }}
+    -----------------------------------------------
+
+    อนุมัติคำร้องนี้: <<< http://{{ domain }}{% url 'accept' abid=apv_id token=token %} >>>
+    ปฏิเสธคำร้องนี้: <<< http://{{ domain }}{% url 'refuse' fbid=app_id token=token %} >>>
+
+
+
+
+{% endautoescape %}

@@ -1,0 +1,174 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <br><br><br><br>
+    <center>
+    <div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="{{ laboratory.photo.url }}" height="200" width="250"/>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        {{ laboratory.name }}
+                                    </h5>
+                                    <h6>
+                                        {{ laboratory.number }}
+                                    </h6>
+                                    <br><br>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">รายละเอียด</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">เวลาทำการ</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <br><br>
+                        {% if user.is_superuser %}
+
+                        <a class="btn btn-danger" href="{% url 'all-lab-delete' pk=laboratory.id %}">Delete</a>
+                        <a class="btn btn-success" href="{% url 'all-lab-update' pk=laboratory.id %}">Update</a>
+
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>เจ้าหน้าที่ดูแลห้องปฏิบัติการ</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ laboratory.intendant }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>ความจุของห้องปฏิบัติการ</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ laboratory.capacity }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>คำอธิบายเพิ่มเติม</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{ laboratory.description }}</p>
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>วันจันทร์</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8:30-17:30</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>วันอังคาร</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8:30-17:30</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>วันพุธ</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8:30-17:30</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>วันพฤหัสบดี</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8:30-17:30</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>วันศุกร์</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>8:30-17:30</p>
+                                            </div>
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <br><br>
+
+    </center>
+
+
+
+    <br><br><br><br>
+
+
+<!--   <div class="container bg bg-white">-->
+
+<!--    <div class="container-fliud">-->
+<!--    <div class="wrapper row">-->
+<!--        <div class="preview col-6">-->
+
+<!--            <div class="preview-pic tab-content">-->
+<!--                <div class="tab-pane active  my-auto mx-auto" id="pic-1"><img-->
+<!--                        src="{{ laboratory.photo.url }}" height="200" width="200"/>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--        </div>-->
+<!--        <div class="details col-6">-->
+<!--            <h1>Laboratory: {{ laboratory.name }}&nbsp&nbsp{{ laboratory.number }}</h1>-->
+
+<!--            <p><strong>Intendant:</strong> {{ laboratory.intendant }}</p>-->
+<!--            <p><strong>Capacity:</strong> {{ laboratory.capacity }}</p>-->
+<!--            <p><strong>Description:</strong> {{ laboratory.description }}</p>-->
+
+
+
+<!--            {% if user.is_superuser %}-->
+
+<!--            <a class="btn btn-danger" href="{% url 'all-lab-delete' pk=laboratory.id %}">Delete</a>-->
+<!--            <a class="btn btn-success" href="{% url 'all-lab-update' pk=laboratory.id %}">Update</a>-->
+
+<!--            {% endif %}-->
+
+
+{% endblock content %}

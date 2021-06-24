@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="it">
+  <meta name="keywords" content="Rapoo,creative, agency, startup,onepage, clean, modern,business, company,it">
+
+  <meta name="author" content="themefisher.com">
+
+  {% block title %}
+    <title> CLAEM System </title>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/max.ico' %}">
+    {% endblock %}
+
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="{% static 'new/plugins/bootstrap/css/bootstrap.min.css' %}">
+  <!-- Animate Css -->
+  <link rel="stylesheet" href="{% static 'new/plugins/animate-css/animate.css' %}">
+  <!-- Icon Font css -->
+  <link rel="stylesheet" href="{% static 'new/plugins/fontawesome/css/all.css' %}">
+  <link rel="stylesheet" href="{% static 'new/plugins/fonts/Pe-icon-7-stroke.css' %}">
+  <!-- Themify icon Css -->
+  <link rel="stylesheet" href="{% static 'new/plugins/themify/css/themify-icons.css' %}">
+  <!-- Slick Carousel CSS -->
+  <link rel="stylesheet" href="{% static 'new/plugins/slick-carousel/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'new/plugins/slick-carousel/slick/slick-theme.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'new/css/style.css' %}">
+
+
+
+</head>
+
+
+<body id="top-header">
+
+<!-- LOADER TEMPLATE -->
+<div id="page-loader">
+    <div class="loader-icon fa fa-spin colored-border"></div>
+</div>
+<!---------------------------------------------------------------------------------------------------->
+    <!-- /LOADER TEMPLATE -->
+<!---------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+      <a class="navbar-brand" href="{% url 'home-page' %}">
+        &nbsp&nbsp<img src="{% static 'images/max.ico' %}" width="30" height="30" alt="logo">
+        &nbsp&nbspห้องปฏิบัติการวิจัยกลาง
+      </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto topnav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home-page' %}">หน้าแรก <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sites.google.com/view/labresearchmedsci/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81?authuser=0">เกี่ยวกับ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://sites.google.com/view/labresearchmedsci/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94%E0%B9%80%E0%B8%AD%E0%B8%81%E0%B8%AA%E0%B8%B2%E0%B8%A3?authuser=0">ดาว์นโหลดเอกสาร</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'all-lab' %}">ห้องปฏิบัติการ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'device-list' %}">ครุภัณฑ์ทางวิทยาศาสตร์</a>
+                </li>
+
+            </ul>
+        </div>
+
+        {% if user.is_authenticated %}
+          <div class="collapse navbar-collapse" id="navbar-list-4" >
+
+              <div >
+                <a>&nbsp{{user.first_name}}&nbsp&nbsp{{user.last_name}} </a>
+              </div>
+
+              <ul class="navbar-nav">
+
+              <li class="nav-item dropdown">
+                {% if user.profile.photo_profile %}
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="{{user.profile.photo_profile.url}}" width="40" height="40" class="rounded-circle">
+                    </a>
+
+                {% endif %}
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'inner-page' %}">Dashboard</a>
+                  <a class="dropdown-item" href="{% url 'edit-profile' %}">แก้ไขโปรไฟล์</a>
+                  <a class="dropdown-item" href="{% url 'logout-page' %}">ออกจากระบบ</a>
+                </div>
+              </li>
+
+
+            </ul>
+          </div>
+
+        {% else %}
+
+        <div>
+            <ul class="navbar-nav ml-auto mt-10">
+                <li class="nav-item">
+                    <a class="btn btn-white btn-circled" href="{% url 'login-page' %}">เข้าสู่ระบบ</a>&nbsp
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-white btn-circled" href="{% url 'signup' %}">ลงทะเบียน</i></a>
+                </li>
+            </ul>
+        </div>
+
+        {% endif %}
+    </nav>
+
+
+
+
+
+    <div class="logo-bar d-none d-md-block d-lg-block bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="logo d-none d-lg-block">
+                        <!-- Brand -->
+                        <a class="navbar-brand" href="{% url 'inner-page' %}">
+						<img src="{% static 'images/lol_max.png' %}" width="200" height="50">
+					    </a>
+                    </div>
+                </div>
+
+
+                {% if user.is_authenticated %}
+                <div class="col-lg-8 justify-content-end ml-lg-auto d-flex col-12 col-md-12 justify-content-md-center">
+                    <div class="top-info-block d-inline-flex">
+                        <div class="icon-block">
+                            <i class="ti-mobile"></i>
+                        </div>
+                        <div class="info-block">
+                            <h5 class="font-weight-500">{{user.profile.tel}}</h5>
+                            <p>เบอร์โทรศัพท์.</p>
+                        </div>
+                    </div>
+
+                    <div class="top-info-block d-inline-flex">
+                        <div class="icon-block">
+                            <i class="ti-email"></i>
+                        </div>
+                        <div class="info-block">
+                            <h5 class="font-weight-500">{{user.email}}</h5>
+                            <p>Email </p>
+                        </div>
+                    </div>
+                    {% if user.is_superuser %}
+                    <div class="top-info-block d-inline-flex">
+                        <div class="icon-block">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="info-block">
+                            <h5 class="font-weight-500">ผู้ดูแลระบบจัดการครุภัณฑ์</h5>
+                            <p>สถานะ</p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="top-info-block d-inline-flex">
+                        <div class="icon-block">
+                            <i class="ti-user"></i>
+                        </div>
+                        <div class="info-block">
+                            <h5 class="font-weight-500">{{user.profile.status}} </h5>
+                            <p>สถานะ</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================================
+                        NAVBAR
+    ==================================================================================================== -->
+    <div class="main-navigation" id="mainmenu-area">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary main-nav navbar-togglable rounded-radius">
+
+                <a class="navbar-brand d-lg-none d-block" href="">
+                    <h4>Rapoo</h4>
+                </a>
+                <!-- Toggler -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span>
+                </button>
+
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Links -->
+                    <ul class="navbar-nav ">
+                        {% if user.is_superuser %}
+
+                        <li class="nav-item ">
+                            <a href="{% url 'device-create' %}" class="nav-link js-scroll-trigger">
+                                เพิ่มครุภัณฑ์ทางวิทยาศาสตร์
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a href="{% url 'all-lab-create' %}" class="nav-link js-scroll-trigger">
+                                เพิ่มห้องปฏิบัติการวิจัย
+                            </a>
+                        </li>
+
+                        <li class="nav-item ">
+                            <a href="{% url 'project-list' %}" class="nav-link js-scroll-trigger">
+                                ตรวจสอบคำร้อง
+                            </a>
+                        </li>
+
+
+
+                        {% else %}
+
+                        <<li class="nav-item ">
+                            <a href="{% url 'project-list' %}" class="nav-link js-scroll-trigger">
+                                ตรวจสอบคำร้อง
+                            </a>
+                        </li>
+
+                        {% endif %}
+                </ul>
+
+                    <ul class="ml-lg-auto list-unstyled m-0">
+                        <li><a href="{% url 'inner-page' %}" class="btn btn-white btn-circled">ยื่นคำร้อง</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+
+
+    <!-- HERO
+    ================================================== -->
+    <section class="banner-area py-7">
+        <!-- Content -->
+        <div class="container">
+            <div class="row  align-items-center">
+                <div class="col-md-12 col-lg-7 text-center text-lg-left">
+                    <div class="main-banner">
+                        <!-- Heading -->
+                        <h1 class="display-4 mb-4 font-weight-normal">
+                            เอกสารที่เกี่ยวข้องสำหรับผู้ใช้บริการ
+                        </h1>
+
+                        <!-- Subheading -->
+                        <p class="lead mb-4">
+                           สำหรับนักวิจัยภายในคณะที่มีความประสงค์ใช้เครื่องมือวิทยาศาสตร์ ห้องปฏิบัติการวิจัยเซลล์และชีวโมเลกุล ขอให้เข้าไปกรอกเอกสารประเมินความพร้อมนักวิจัย.
+                        </p>
+
+                        <!-- Button -->
+                        <p class="mb-0">
+                            <a href="https://sites.google.com/view/labresearchmedsci/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94%E0%B9%80%E0%B8%AD%E0%B8%81%E0%B8%AA%E0%B8%B2%E0%B8%A3?authuser=0" target="_blank" class="btn btn-primary btn-circled">
+                                ประเมินความพร้อม
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="banner-img-block">
+                        <img src="{% static 'images/Process.jpg' %}" alt="banner-img" class="img-fluid">
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+
+
+ <section class="section bg-grey" id="feature">
+        <div class="container">
+            <div class="row justy-content-center">
+                <div>
+                    <div class="service-content">
+                        <center><h2>เครื่องมือสนับสนุนการยกระดับความปลอดภัยห้องปฏิบัติการ พัฒนาโดย วช. และ Node (มช.)</h2></center>
+                        <br><br>
+                        <p>ห้องปฏิบัติการวิจัยกลาง คณะวิทยาศาสตร์การแพทย์ มหาวิทยาลัยพะเยา ตระหนักถึงนโยบายเรื่องความปลอดภัยทั้งของมหาวิทยาลัย รวมถึงความรับผิดชอบขององค์กร ในเรื่องความปลอดภัยของบุคลากรภายในคณะฯ
+                            และบุคลากรภายนอกที่มาปฏิบัติงานภายในคณะฯ รวมถึงชุมชน และสิ่งแวดล้อม จึงได้แต่งตั้งคณะกรรมการความปลอดภัยห้องปฏิบัติการ เพื่อพัฒนาระบบการบริหารจัดการด้านความปลอดภัย อาชีวอนามัยและสิ่งแวดล้อม
+                            ให้เป็นไปตามกฎหมายอันจะนำไปสู่มาตรฐานความปลอดภัยระดับสากล.</p>
+                        <br><br>
+                    </div>
+                    <br><br>
+                </div>
+                <div class="col-lg-3 col-sm-6 col-md-6">
+                    <div class="text-center feature-block">
+                        <div class="img-icon-block mb-4">
+                            <i class="ti-pulse"></i>
+                        </div>
+                        <a href="http://esprel.labsafety.nrct.go.th/home.asp">ESPReL Checklist<a>
+                        <p>โครงการยกระดับมาตรฐานความปลอดภัยห้องปฏิบัติการวิจัยในประเทศไทย.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 col-md-6">
+                    <div class="text-center feature-block">
+                        <div class="img-icon-block mb-4">
+                            <i class="ti-harddrives"></i>
+                        </div>
+
+                        <a href="http://cheminvent.labsafety.nrct.go.th/UP/Account/Login?ReturnUrl=%2fUP%2f">ChemInvent<a>
+
+                        <p>โปรแกรมที่ใช้สำหรับบันทึกข้อมูลสารเคมีพร้อมระบบประมวลผล.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 col-md-6">
+                    <div class="text-center feature-block">
+                        <div class="img-icon-block mb-4">
+                            <i class="ti-server"></i>
+                        </div>
+                        <a href="https://labsafety.nrct.go.th/">ENoP<a>
+                        <p>ระบบจัดการฐานข้อมูลความปลอดภัยห้องปฏิบัติการ.</p>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 col-md-6">
+                    <div class="text-center feature-block">
+                        <div class="img-icon-block mb-4">
+                            <i class="ti-trash"></i>
+                        </div>
+<!--                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"href="">อ่านเพิ่มเติม.</a>-->
+                        <a href="http://labsafety.up.ac.th/wastetrack/login.php">UP Waste Track<a>
+                        <p>ระบบ WasteTrack จําแนกของเสียอันตราย.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div> <!-- / .container -->
+    </section>
+
+
+
+    <!-- SERVICE-1
+    ================================================== -->
+    <section class="bg-grey" id="service">
+        <div class="container">
+            <div class="row ">
+                <div class="col-lg-4">
+                    <div class="service-img">
+                        <img src="https://lh3.googleusercontent.com/ixnwMVqn1WlL8nWZhuce7AmLORujZJsG6lVr14WKjXR0u6mC63rRxlu9b71u47ztIvkuMySMOUQ0fckChpt65MfkjlhD5iLFLCznubo3BbvvW1LVw8230otzgND2p3BvXg=w1280" alt="" class="img-fluid">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 pl-4">
+                    <div class="service-content">
+                        <h1>ประวัติ</h1>
+                        <p>ห้องปฏิบัติการวิจัยกลาง คณะวิทยาศาสตร์การแพทย์ มหาวิทยาลัยพะเยา ก่อตั้งขึ้นอย่างเป็นทางการ เมื่อปี 2562 กำกับดูแลโดย รองคณบดีฝ่ายวิจัยและนวัตกรรม มุ่งเน้นการให้บริการเครื่องมือวิทยาศาสตร์เพื่อการวิจัย
+                            ที่บูรณาการศาสตร์ทางด้านกายวิภาคศาสตร์ สรีรวิทยา จุลชีววิทยาและปรสิตวิทยา ชีวเคมี โภชนาการ ให้แก่นิสิตและนักวิจัยภายในองค์กร.</p>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+<section class="section bg-grey" id="process">
+        <div class="container">
+            <div class="row justify-content-center mb-4">
+                <img src="{% static 'images/lab.jpg' %}" width="800" height="400" >
+
+                <div>
+
+                    <div >
+                        <br><br>
+                        <!-- Heading -->
+                        <h4>ห้องปฏิบัติการวิจัยกลางประกอบไปด้วยห้องปฏิบัติการ ที่แยกประเภทตามลักษณะงาน ทั้งหมด 12 ห้อง</h4>
+
+                        <br><br>
+
+                        <!-- Subheading -->
+                        <p>1. CE02402   &nbsp&nbsp&nbsp&nbsp	ห้องศึกษาค้นคว้าอิสระ (Independent Study Room) ห้องเก็บวัสดุวิทยาศาสตร์และสารเคมี(Stock)</p>
+
+                          <p>2. CE02403  &nbsp&nbsp&nbsp&nbsp  	ห้องปฏิบัติการวิจัยเซลล์และชีวโมเลกุล (Cell culture and   Molecular Laboratory) </p>
+
+                          <p>3. CE02404   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติการเพาะเลี้ยงเซลล์ (Cell culture Laboratory) </p>
+
+                          <p>4. CE02405   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติการชีวโมเลกุล  (Molecular Laboratory) </p>
+
+                          <p>5. CE02406   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติชีวเคมีและเคมีวิเคราะห์ (Biochemistry and Analysis   Laboratory) </p>
+
+                           <p>6. CE02407  &nbsp&nbsp&nbsp&nbsp 	ห้องปฏิบัติการจุลชีววิทยาและปรสิตวิทยา (Microbiology and   Parasitology Laboratory) </p>
+
+                           <p>7. CE02407/1   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติการเชื้อรา (Fungus Laboratory) </p>
+
+                           <p>8. CE02407/2   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติการแบคทีเรีย (Bacteriology Laboratory) </p>
+
+                          <p>9.  CE02408  &nbsp&nbsp&nbsp&nbsp 	ห้องปฏิบัติการพยาธิวิทยากายวิภาค (Anatomical pathology   Laboratory) </p>
+
+                           <p>10. CE02409   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติการทางคลินิก (Clinical Laboratory) </p>
+
+                          <p>11. CE02411/1   &nbsp&nbsp&nbsp&nbsp	ห้องปฏิบัติการโรคติดเชื้อ 1 (Infectious disease Laboratory I) </p>
+
+                          <p>12. CE02411/2  &nbsp&nbsp&nbsp&nbsp  ห้องปฏิบัติการโรคติดเชื้อ 2 (Infectious disease Laboratory II) </p>
+
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+            <br><br>
+
+</section>
+
+
+<section class="section" id="services-2">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 text-center">
+                    <div class="section-heading">
+                        <!-- Heading -->
+                        <h2 class="section-title mb-2 text-white">
+                            คู่มือการใช้งานเครื่องมือวิทยาศาสตร์
+                        </h2>
+
+                        <!-- Subheading -->
+                        <p class="mb-5 text-white">
+                            เป็นคู่มือสำหรับใช้งานเครื่องมือทางวิทยาศาสตร์หรือครุภัณฑ์ทางวิทยาศาสตร์ ใช้ประกอบในการใช้งาน.
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+            <div class="row">
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <div class="web-service-block">
+<!--                        <i class="ti-light-bulb"></i>-->
+                        <h3>Micro Spectrophotometer</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1RPzW27dsTl5fPd3X8iH9BOqwVgW3as6l/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <div class="web-service-block">
+<!--                        <i class="ti-desktop"></i>-->
+                        <h3>pH Meter</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1UyagdUtArbYHhOz7lqQMqWNgTO-Q8_9o/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <div class="web-service-block">
+<!--                        <i class="ti-announcement"></i>-->
+                        <h3>Tissue Processor</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/18RvI9Fon1mivyIG4rNinOgf1VhZILmZB/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-layers-alt"></i>-->
+                        <h3>Cryostat</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1rV_3FaeRaOEk87qGwNxYj9RJqBjYRucf/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-mobile"></i>-->
+                        <h3>Lyophilizer</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1zT-Wpdkc3yuX9xylbpt95qku1t47beWM/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-settings"></i>-->
+                        <h3>Multi-Mode Microplate Reader</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1UqFuiTOTpTUH7_zuR4hrai8khsR8AoQ6/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-layers-alt"></i>-->
+                        <h3>Realtime-PCR</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/drive/folders/162Kb3EPhXclMg-bOpncDsymG9iEypRZj">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block" >
+                        <h3>chemiPro Chemiluminescence</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/drive/folders/1CybPJGL4f1Ii2tHKWvQQFqstm_QQUCr9">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+<!--                        <i class="ti-settings"></i>-->
+                        <h3>ชุดถ่ายภาพกล้องสเตอริโอ 3 ตา</h3>
+                        <a style="font-size:14px; color:#538b01; font-weight:bold; font-style:italic;"
+                           href="https://drive.google.com/file/d/1JD_Huk6f5o-8pg_-9iuvAxud3732r5hk/view">อ่านคู่มือเพิ่มเติม.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+ <footer class="section " id="footer">
+        <div class="overlay footer-overlay"></div>
+        <!--Content -->
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-lg-4 col-sm-12">
+                    <div class="footer-widget">
+                        <!-- Brand -->
+                        <img src="{% static 'images/banners_max.png' %}" width="200" height="50">
+                        <p>ห้องปฏิบัติการวิจัยกลาง ชั้น 4 <br>
+                        คณะวิทยาศาสตร์การแพทย์ มหาวิทยาลัยพะเยา <br>
+                        19 หมู่ 2  ต.แม่กา อ.เมือง จ.พะเยา 56000 <br>
+                        โทร. 062 549 1449 <br>
+                        จัดทำโดย: วัชรพงษ์ แกร่งกล้า </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 ml-lg-auto col-sm-12">
+                    <div class="footer-widget">
+                        <h3> LabSafety UP </h3>
+                        <!-- Links -->
+                        <ul class="footer-links ">
+                            <li>
+                                <a href="http://labsafety.up.ac.th/Documents_Labsafety/Type-of-Waste-v6.pdf">
+                                    คำอธิบาย ประเภทของเสียสารเคมีอันตราย
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://labsafety.nrct.go.th/file/cat?slug=cheminvent2015">
+                                    คู่มือโปรแกรม ChemInvent 2015
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://esprel.labsafety.nrct.go.th/files/ESPReL-Book2.pdf">
+                                     คู่มือการประเมินความปลอดภัยห้องปฏิบัติการ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://esprel.labsafety.nrct.go.th/files/ESPReL-Book1.pdf">
+                                    แนวปฏิบัติความปลอดภัยในห้องปฏิบัติการ
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://esprel.labsafety.nrct.go.th/files/ESPReL-Book2.pdf">
+                                    คู่มือการประเมินความปลอดภัยห้องปฏิบัติการ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="footer-widget">
+                        <h3>เกี่ยวกับเรา</h3>
+                        <!-- Links -->
+                        <ul class="footer-links ">
+                            <li>
+                                <a href="http://labsafety.up.ac.th/index/alldocument">
+                                    ห้องปฏิบัติการปลอดภัย
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://sites.google.com/view/labresearchmedsci/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%AB%E0%B8%9A%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3?authuser=0">
+                                    ห้องปฏิบัติการวิจัยกลาง
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://reg.up.ac.th/">
+                                    มหาวิทยาวัยพะเยา
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://labsafety.up.ac.th/wastetrack/login.php">
+                                    UP Waste Track
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="https://www.facebook.com/%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A7%E0%B8%B4%E0%B8%88%E0%B8%B1%E0%B8%A2%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87-%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C-%E0%B8%A1%E0%B8%9E%E0%B8%B0%E0%B9%80%E0%B8%A2%E0%B8%B2-104638684637925">
+                                    FanPage
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="footer-widget">
+                        <h3>ช่องทางติดต่อ</h3>
+                        <!-- Links -->
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="https://www.facebook.com/%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%9B%E0%B8%8F%E0%B8%B4%E0%B8%9A%E0%B8%B1%E0%B8%95%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A7%E0%B8%B4%E0%B8%88%E0%B8%B1%E0%B8%A2%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87-%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%81%E0%B8%9E%E0%B8%97%E0%B8%A2%E0%B9%8C-%E0%B8%A1%E0%B8%9E%E0%B8%B0%E0%B9%80%E0%B8%A2%E0%B8%B2-104638684637925"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                            <li>
+                            <a href="http://esprel.labsafety.nrct.go.th/book.asp"><i class="fas fa-atom"></i>Esprel
+                            </a></li>
+                            <li><a href="http://labsafety.up.ac.th/index/alldocument"><i class="fab fa-bimobject"></i>Blog
+                            </a></li>
+                            <li><a href="https://sites.google.com/view/labresearchmedsci/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%AB%E0%B8%9A%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3?authuser=0"><i class="fab fa-google"></i>Google Site
+                            </a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+
+            <div class="row text-right pt-5">
+                <div class="col-lg-12">
+                    <!-- Copyright -->
+                    <p class="footer-copy ">
+                        &copy; Copyright <span class="current-year">60023203@up.ac.th</span> All rights reserved.
+                    </p>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </footer>
+
+
+    <!--  Page Scroll to Top  -->
+
+    <a class="scroll-to-top js-scroll-trigger" href="#top-header">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+
+
+
+
+    <!--
+    Essential Scripts
+    =====================================-->
+
+
+    <!-- Main jQuery -->
+    <script src="{% static 'new/plugins/jquery/jquery.min.js' %}"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="{% static 'new/plugins/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'new/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- Slick Slider -->
+    <script src="{% static 'new/plugins/slick-carousel/slick/slick.min.js' %}"></script>
+    <script src="{% static 'new/js/jquery.easing.1.3.js' %}"></script>
+    <!-- Map Js -->
+    <script src="{% static 'new/plugins/google-map/gmap3.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwIQh7LGryQdDDi-A603lR8NqiF3R_ycA"></script>
+
+    <script src="{% static 'new/js/form/contact.js' %}"></script>
+    <script src="{% static 'new/js/theme.js' %}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </body>
+  </html>

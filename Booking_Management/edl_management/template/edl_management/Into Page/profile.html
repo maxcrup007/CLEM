@@ -1,0 +1,137 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_filters %}
+
+{% block content %}
+{% load static %}
+
+<!--==================================
+=            User Profile            =
+===================================-->
+
+<section class="user-profile section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
+				<div class="sidebar">
+					<!-- User Widget -->
+					<div class="widget user">
+						<!-- User Image -->
+						<div class="image d-flex justify-content-center">
+							{% if user.profile.photo_profile %}
+                                    <img src="{{user.profile.photo_profile.url}}" width="40" height="40" class="rounded-circle" >
+							{% else %}
+            						<img src="{{ MEDIA_URL }}{{ 'photo_profile/default.png' }}" width=40 height="40" class="rounded-circle">
+                            {% endif %}
+						</div>
+						<!-- User Name -->
+						<h7 class="text-center">{{user.first_name}}&nbsp&nbsp{{user.last_name}}</h7>
+
+							<br><br>
+
+							<p>Email: {{user.email}}</p>
+
+
+						<!-- Status -->
+						<div class="form-group">
+							{% if user.profile.contact %}
+								<p>สถานะ: {{user.profile.status}}</p>
+							{% else %}
+								<p>สถานะ: ยังไม่ได้ระบุ</p>
+							{% endif %}
+						</div>
+
+
+
+						<!-- Tel. -->
+						<div class="form-group">
+							{% if user.profile.tel %}
+								<p>เบอร์โทร: {{user.profile.tel}}</p>
+							{% else %}
+								<p>เบอร์โทร: ยังไม่ได้ระบุ</p>
+							{% endif %}
+						</div>
+
+						<!-- Faculty -->
+						<div class="form-group">
+							{% if user.profile.faculty %}
+								<p>คณะ: {{user.profile.faculty}}</p>
+							{% else %}
+								<p>คณะ: ยังไม่ได้ระบุ</p>
+							{% endif %}
+						</div>
+
+						<!-- Branch -->
+						<div class="form-group">
+							{% if user.profile.branch %}
+								<p>สาขา: {{user.profile.branch}}</p>
+							{% else %}
+								<p>สาขา: ยังไม่ได้ระบุ</p>
+							{% endif %}
+						</div>
+
+
+
+					</div>
+					<!-- Dashboard Links -->
+					<div class="widget dashboard-links">
+						<ul>
+							<li><a class="my-1 d-inline-block" href="">Check Approval</a></li>
+							<li><a class="my-1 d-inline-block" href="">Calendar List </a></li>
+						{% if user.is_superuser %}
+							<li><a class="my-1 d-inline-block" href="{% url 'device-create' %}">Create Equipment </a></li>
+							<li><a class="my-1 d-inline-block" href="{% url 'device-list' %}">Create Laboratory</a></li>
+						{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+				<!-- Edit Profile Welcome Text -->
+				<div class="widget welcome-message">
+					<h2>{{user.first_name}}&nbsp&nbsp{{user.last_name}}</h2>
+					<p>{{user.profile.information}}</p>
+				<!-- Contact -->
+					<div class="form-group">
+						{% if user.profile.contact %}
+							<p>ข้อมูลติดต่อ: {{user.profile.contact}}</p>
+						{% else %}
+							<p>ข้อมูลติดต่อ: ยังไม่ได้ระบุ</p>
+						{% endif %}
+					</div>
+				</div>
+
+
+					<div class="bg bg-white form-group mx-auto my-auto">
+						<form method="post" class="form" enctype="multipart/form-data">
+							{% csrf_token %}
+							{{ form|crispy }}
+							{{ profile_form|crispy }}
+							<center><input class="btn btn-transparent" type="submit" value="Save Information"/></center>
+						</form>
+					</div>
+
+						</form>
+					</div>
+					</div>
+<!--				<a href="{% url 'edit-profile-info' %}" class="btn btn-success">Edit Informations</a>-->
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

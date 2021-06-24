@@ -1,0 +1,44 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+
+    <div class="bg bg-white form-group mx-auto my-auto">
+        <form method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+
+
+
+              <div class="form-group col-md-6 mb-0">
+                {{ form.requisition|as_crispy_field }}
+              </div>
+              <div class="form-group col-md-6 mb-0">
+                {{ form.device|as_crispy_field }}
+              </div>
+            <div class="form-group col-md-6 mb-0">
+                {{ form.official_working|as_crispy_field }}
+            </div>
+
+
+
+
+            <!-- Input Div -->
+            <div class="input-div">
+                 {{ form.check_in|as_crispy_field }}
+            </div>
+
+            <!-- Input Div -->
+            <div class="input-div">
+                 {{ form.check_out|as_crispy_field }}
+            </div>
+
+
+
+            <center><input class="btn btn-success" type="submit" value="Submit"/></center>
+        </form>
+    </div>
+
+{% endblock content %}

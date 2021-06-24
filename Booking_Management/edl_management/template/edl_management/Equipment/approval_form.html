@@ -1,0 +1,55 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_filters %}
+{% block content %}
+{% load static %}
+
+    <div class="bg bg-white form-group mx-auto my-auto">
+        <form method="post" class="form" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Equipment -->
+            <div class="form-group col-md-6 mb-0">
+                {{ form.equipment|as_crispy_field}}
+            </div>
+            <!-- Project -->
+            <div class="form-group col-md-6 mb-0">
+                {{ form.project|as_crispy_field}}
+            </div>
+            <!-- Start Reservation -->
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                {{ form.start_reservation|as_crispy_field}}
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+            <!-- End Reservation -->
+            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                {{ form.end_reservation|as_crispy_field}}
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+
+            <!-- Comment -->
+            <div class="form-group">
+                {{ form.comment|as_crispy_field}}
+            </div>
+            <!-- Description -->
+            <div class="form-group">
+                {{ form.description|as_crispy_field}}
+            </div>
+            <!-- Confirm -->
+            <div class="form-group">
+                {{ form.confirm|as_crispy_field}}
+            </div>
+
+            <center><input class="btn btn-success" type="submit" value="Submit"/></center>
+            <br><br>
+        </form>
+    </div>
+
+
+
+
+
+{% endblock content %}

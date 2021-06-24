@@ -1,0 +1,75 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+<!--==================================
+=            Laboratory Section      =
+===================================-->
+
+
+
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+				<!-- Recently Favorited -->
+				<div class="widget dashboard-container my-adslist">
+					<h3 class="widget-header">Laboratory List</h3>
+					<table class="table table-responsive product-dashboard-table">
+
+						<tbody>
+                        {% for l in lab %}
+							<tr>
+								<td class="product-thumb">
+									<div class="tab-pane active  my-auto mx-auto" id="pic-1">
+										<img width="80px" height="auto" src="{{ l.photo.url }}" alt="image description">
+                					</div>
+								</td>
+
+								<td class="product-details">
+									<h3 class="title">{{ l.number }}&nbsp&nbsp{{ l.name }}</h3>
+									<h4 class="title">{{ l.intendant }}</h4>
+
+								<td class="action" data-title="Action">
+									<div class="">
+										<ul class="list-inline justify-content-center">
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="View" class="view" href="{% url 'all-lab-detail' pk=l.id %}">
+													<i class="fa fa-eye"></i>
+												</a>
+											</li>
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="Edit" class="edit" href="{% url 'all-lab-update' pk=l.id %}">
+													<i class="fa fa-pencil"></i>
+												</a>
+											</li>
+											{% if user.is_superuser %}
+											<li class="list-inline-item">
+												<a data-toggle="tooltip" data-placement="top" title="Delete" class="delete" href="{% url 'all-lab-delete' pk=l.id %}">
+													<i class="fa fa-trash"></i>
+												</a>
+											</li>
+											{% endif %}
+										</ul>
+									</div>
+								</td>
+							</tr>
+                        {% endfor %}
+						</tbody>
+					</table>
+
+				</div>
+
+
+
+        </div>
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+

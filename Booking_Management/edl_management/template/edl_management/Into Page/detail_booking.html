@@ -1,0 +1,27 @@
+{% extends 'edl_management/base.html' %}
+
+{% load static %}
+{% block content %}
+
+<div class="container">
+
+    <center>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr><th>Username</th><th>Lab's Number</th><th>Check in</th><th>Check out</th></tr>
+        </thead>
+        {% for sc in booking %}
+        <tbody>
+        <tr><th>{{sc.user}}</th><th>{{sc.lab}}</th><th>{{sc.check_in}}</th><th>{{sc.check_out}}</th></tr>
+        </tbody>
+        {% endfor %}
+
+
+    </table>
+    </center>
+
+
+</div>
+
+
+{% endblock content %}

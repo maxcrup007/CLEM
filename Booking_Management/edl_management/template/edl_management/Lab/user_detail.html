@@ -1,0 +1,47 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+
+   <div class="container bg bg-white">
+
+    <div class="container-fliud">
+    <div class="wrapper row">
+        <div class="preview col-6">
+
+            <div class="preview-pic tab-content">
+                <div class="tab-pane active  my-auto mx-auto" id="pic-1"><img
+                        src="{{ student.photo.url }}" height="200" width="200"/>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="details col-6">
+            <h1>Name: {{ student.user_first_name }}&nbsp&nbsp{{ student.user_last_name }}</h1>
+
+            <p><strong>Borrower Id:</strong>{{ student.user_number }}</p>
+            <p><strong>Faculty:</strong> {{ student.user_faculty }}</p>
+            <p><strong>Email:</strong> {{ student.user_email }}</p>
+            <p><strong>Tel:</strong> {{ student.user_tel }}</p>
+
+
+
+
+            <p><strong>Desire:</strong> {{ student.user_desire }}</p>
+                <a class="btn btn-danger" href="{% url 'br-delete' pk=student.id %}">Delete</a>
+                <a class="btn btn-success" href="{% url 'br-update' pk=student.id %}">Update</a>
+            <br><br>
+
+
+
+        </div>
+        <hr>
+    </div>
+
+
+
+
+{% endblock content %}

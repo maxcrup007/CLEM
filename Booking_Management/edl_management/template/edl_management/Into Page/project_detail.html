@@ -1,0 +1,39 @@
+{% extends 'edl_management/base.html' %}
+
+
+{% load static %}
+
+{% block content %}
+    <div class="container bg bg-white">
+
+    <div class="container-fliud">
+    <div class="wrapper row">
+
+    <div class="details col-6">
+        <h1>Project: {{ project.project_name }}</h1>
+
+        <p><strong>Category:</strong>{{ project.category }}</p>
+        <p><strong>Objective:</strong> {{ project.objective }}</p>
+        <p><strong>Applicant status:</strong> {{ project.applicant_status }}</p>
+
+            <h4>Copies</h4>
+
+            {% if user.is_superuser %}
+
+                <a class="btn btn-danger" href="{% url 'project-delete' pk=project.id %}">Delete</a>
+                <a class="btn btn-success" href="{% url 'project-update' pk=project.id %}">Update</a>
+
+            {% endif %}
+
+            {% if project.available_copies %}
+                <br>
+                no of avialable copies={{ project.available_copies }}<br>
+                <a class="btn btn-primary" href="{% url 'request_issue' pk=project.id %}">Issue</a>
+            {% endif %}
+    </div>
+
+    </div>
+
+
+
+{% endblock %}

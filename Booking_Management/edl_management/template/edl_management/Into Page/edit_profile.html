@@ -1,0 +1,142 @@
+{% extends 'edl_management/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+
+<!--==================================
+=            User Profile            =
+===================================-->
+
+<section class="user-profile section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
+				<div class="sidebar">
+					<!-- User Widget -->
+					<div class="widget user">
+						<!-- User Image -->
+						<div class="image d-flex justify-content-center">
+							{% if user.profile.photo_profile %}
+                                    <img src="{{user.profile.photo_profile.url}}" width="40" height="40" class="rounded-circle" >
+							{% else %}
+            						<img src="{{ MEDIA_URL }}{{ 'photo_profile/default.png' }}" width=40 height="40" class="rounded-circle">
+                            {% endif %}
+						</div>
+						<!-- User Name -->
+						<br><br>
+						<p>Email: {{user.email}}</p>
+						<p>เบอร์โทร: {{user.profile.tel}}</p>
+						<p>คณะ: {{user.profile.faculty}}</p>
+						<p>สาขา: {{user.profile.branch}}</p>
+						<p>สถานะ: {{user.profile.profile_category}}</p>
+					</div>
+					<!-- Dashboard Links -->
+					<div class="widget dashboard-links">
+						<ul>
+							<li><a class="my-1 d-inline-block" href="{% url 'project-list' %}">Check Approval</a></li>
+							<li><a class="my-1 d-inline-block" href="{% url 'calendar-page' %}">Calendar List </a></li>
+						{% if user.is_superuser %}
+							<li><a class="my-1 d-inline-block" href="{% url 'device-create' %}">Create Equipment </a></li>
+							<li><a class="my-1 d-inline-block" href="{% url 'device-list' %}">Create Laboratory</a></li>
+						{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
+				<!-- Edit Profile Welcome Text -->
+				<div class="widget welcome-message">
+					<h2>{{user.first_name}}&nbsp&nbsp{{user.last_name}}</h2>
+					<p>{{user.profile.information}}</p>
+				</div>
+				<!-- Edit Personal Info -->
+				<div class="row">
+					<div class="col-lg-6 col-md-6">
+						<div class="widget personal-info">
+							<h3 class="widget-header user">Edit Account Information</h3>
+							<form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+								<div class="form-row">
+								<!-- First Name -->
+								<div class="form-group col-md-6 mb-0">
+									{{ form.first_name|as_crispy_field}}
+								</div>
+								<!-- Last Name -->
+								<div class="form-group">
+									{{ form.last_name|as_crispy_field}}
+								</div>
+                                <!-- Email -->
+								<div class="form-group">
+									{{ form.email|as_crispy_field}}
+								</div>
+
+								<!-- Current Student ID -->
+								<div class="form-group">
+
+									{{ profile_form.status|as_crispy_field}}
+								</div>
+
+								<!-- Edit Information -->
+								<div class="form-group">
+
+									{{ profile_form.information|as_crispy_field}}
+								</div>
+								<!-- Edit Student Contact -->
+								<div class="form-group">
+
+									{{ profile_form.contact|as_crispy_field}}
+								</div>
+								<!-- Edit Tel. -->
+								<div class="form-group">
+
+									{{ profile_form.tel|as_crispy_field}}
+								</div>
+								<!-- Edit Faculty -->
+								<div class="form-group">
+
+									{{ profile_form.faculty|as_crispy_field}}
+								</div>
+								<!-- Edit Branch -->
+								<div class="form-group">
+
+									{{ profile_form.branch|as_crispy_field}}
+								</div>
+
+								<!-- File chooser -->
+								<div class="form-group choose-file d-inline-flex">
+									<i class="fa fa-user text-center px-3"></i>
+									<input type="file" class="form-control-file mt-2 pt-1" id="photo_profile" name="photo_profile">
+								 </div>
+
+								<!-- Submit Button -->
+								<button type="submit" class="btn btn-transparent">Save Information</button>
+
+								</div>
+
+
+							</form>
+
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
